@@ -1,0 +1,19 @@
+---
+version: "2.1"
+services:
+  jellyfin:
+    build:
+      context: .
+      args:
+        - VERSION=10.8.8
+        - RFFMPEG_REMOTE_USER="${USER}"
+    ports:
+      - 8096:8096
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - /var/folders/media:/var/folders/media
+      - /tmp/jellyfin:/tmp/jellyfin
+      - config:/config
+
+volumes:
+  config:
